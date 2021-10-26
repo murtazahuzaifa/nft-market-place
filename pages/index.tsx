@@ -40,7 +40,6 @@ const Home: NextPage = () => {
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
-
     const signer = provider.getSigner();
     const contract = new ethers.Contract(nftmarketaddress, NFTMarket.abi, signer);
 
