@@ -1,5 +1,5 @@
 {
-  "name": "nft-market-place",
+  "name": "nft-market-place-frontend",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -9,14 +9,9 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@nomiclabs/hardhat-ethers": "^2.0.2",
-    "@nomiclabs/hardhat-waffle": "^2.0.1",
-    "@openzeppelin/contracts": "^4.3.2",
     "axios": "^0.22.0",
     "chai": "^4.3.4",
-    "ethereum-waffle": "^3.4.0",
     "ethers": "^5.4.7",
-    "hardhat": "^2.6.5",
     "ipfs-http-client": "50.1.2",
     "next": "11.1.2",
     "react": "17.0.2",

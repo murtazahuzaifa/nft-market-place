@@ -1,0 +1,11 @@
+# App tutorial
+https://www.youtube.com/watch?v=GKJBEEXUha0
+
+# Vercel - Create a Next.js App and Deploy with Vercel CLI
+https://www.youtube.com/watch?v=4DbNUJ-9_U4
+
+command to run local block-chain node:
+ npx hardhat node
+
+command to deploy smart contract on local block-chain:
+ npx hardhat run scripts/deploy.js --network localhost

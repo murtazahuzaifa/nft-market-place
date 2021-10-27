@@ -1,23 +1,25 @@
 import { useEffect, useState } from 'react';
 import type { NextPage } from 'next';
 import { nftaddress, nftmarketaddress } from '../config';
-import NFT from '../artifacts/contracts/NFT.sol/NFT.json'
-import NFTMarket from '../artifacts/contracts/NFTMarket.sol/NFTMarket.json'
+import NFT from '../../backend/artifacts/contracts/NFT.sol/NFT.json'
+import NFTMarket from '../../backend/artifacts/contracts/NFTMarket.sol/NFTMarket.json'
+import { NFTMarket as NFTMarketType, NFT as NFTType } from '../../backend/generated-types';
+import { NftTypeIntereface } from '../global-types';
 import axios from 'axios';
 import Web3Modal from 'web3modal'
 import { ethers } from 'ethers'
 
 const Home: NextPage = () => {
-  const [nfts, setNfts] = useState([] as any[]);
+  const [nfts, setNfts] = useState<NftTypeIntereface[]>([]);
   const [loadingState, setLoadingState] = useState<"not-loaded" | "loaded">('not-loaded');
 
   async function loadNFTs() {
     const provider = new ethers.providers.JsonRpcProvider();
-    const marketContract = new ethers.Contract(nftmarketaddress, NFTMarket.abi, provider);
-    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider);
+    const marketContract = new ethers.Contract(nftmarketaddress, NFTMarket.abi, provider) as any as NFTMarketType;
+    const tokenContract = new ethers.Contract(nftaddress, NFT.abi, provider) as any as NFTType;
     const data = await marketContract.fetchMarketItems();
 
-    const items = await Promise.all<any>(data.map(async (i) => {
+    const items = await Promise.all(data.map(async (i) => {
       const tokenUri = await tokenContract.tokenURI(i.tokenId);
       const meta = await axios.get<{ name: string, image: string, description: string }>(tokenUri);
       let price = ethers.utils.formatUnits(i.price.toString(), 'ether');
@@ -36,7 +38,7 @@ const Home: NextPage = () => {
     setLoadingState('loaded')
   }
 
-  async function buyNft(nft) {
+  async function buyNft(nft: NftTypeIntereface) {
     const web3Modal = new Web3Modal();
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);

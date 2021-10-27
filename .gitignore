@@ -9,7 +9,7 @@
 /coverage
 
 # next.js
-/.next/
+.next
 /out/
 
 # production
@@ -38,7 +38,9 @@ node_modules
 coverage
 coverage.json
 typechain
+generated-types
 
 #Hardhat files
 cache
 artifacts
+dist

@@ -1,5 +1,0 @@
-# App tutorial
-https://www.youtube.com/watch?v=GKJBEEXUha0
-
-# Vercel - Create a Next.js App and Deploy with Vercel CLI
-https://www.youtube.com/watch?v=4DbNUJ-9_U4

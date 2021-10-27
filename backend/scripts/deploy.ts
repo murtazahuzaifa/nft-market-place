@@ -3,16 +3,18 @@
 //
 // When running the script with `npx hardhat run <script>` you'll find the Hardhat
 // Runtime Environment's members available in the global scope.
-const hre = require("hardhat");
+import { run, ethers } from "hardhat";
 
 async function main() {
+  
+  await run('compile');
 
-  const NFTMarket = await hre.ethers.getContractFactory("NFTMarket");
+  const NFTMarket = await ethers.getContractFactory("NFTMarket");
   const nftMarket = await NFTMarket.deploy();
   await nftMarket.deployed();
   console.log("NFTMarket deployed to:", nftMarket.address);
 
-  const NFT = await hre.ethers.getContractFactory("NFT");
+  const NFT = await ethers.getContractFactory("NFT");
   const nft = await NFT.deploy(nftMarket.address);
   await nft.deployed();
   console.log("NFT deployed to:", nft.address);
