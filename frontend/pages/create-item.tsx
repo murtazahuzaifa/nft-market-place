@@ -9,7 +9,6 @@ import Web3Modal from 'web3modal';
 import { ethers } from 'ethers';
 import { useRouter } from 'next/router';
 
-// const client = ipfsHttpClient({ url: 'https://ipfs.infura.io', port: 5001, apiPath: "api/v0" });
 const client = ipfsHttpClient({ url: "https://ipfs.infura.io:5001/api/v0", });
 
 const CreateItem: NextPage = () => {

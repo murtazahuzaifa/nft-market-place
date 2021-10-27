@@ -4,6 +4,6 @@ export interface NftTypeIntereface {
     seller: string;
     owner: string;
     image: string;
-    name: string;
+    name?: string;
     description: string;
 }
