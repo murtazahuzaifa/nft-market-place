@@ -38,7 +38,7 @@ const CreateItem: NextPage = () => {
         try {
             const added = await client.add(data);
             const url = `https://ipfs.infura.io/ipfs/${added.path}`;
-            createSale(url);
+            await createSale(url);
         } catch (error) {
             console.log('Error data upload', error);
         }
@@ -51,9 +51,10 @@ const CreateItem: NextPage = () => {
         const provider = new ethers.providers.Web3Provider(connection);
         const signer = provider.getSigner();
         const NFTcontract = new ethers.Contract(nftaddress, NFT.abi, signer) as any as NFTType;
+        console.log(url)
         let transaction = await NFTcontract.createToken(url);
         const tx = await transaction.wait();
-        const event = tx.events && tx.events[0]
+        const event = tx.events && tx.events[0];
         const value = event?.args && event.args[2];
         const tokenId = value.toNumber();
 
