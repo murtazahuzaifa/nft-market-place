@@ -7,7 +7,7 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <div>
       <nav className='border p' >
-        <p className='text-4xl font-bold' >Metaverse Marketplace</p>
+        <p className='text-4xl font-bold' >NFT Marketplace</p>
         <div className='flex mt-4'>
           <Link href="/"><a className='mr-6 text-pink-500' >Home</a></Link>
           <Link href="/create-item"><a className='mr-6 text-pink-500' >Sell Digital Asset</a></Link>

@@ -43,10 +43,9 @@ const Home: NextPage = () => {
     const connection = await web3Modal.connect();
     const provider = new ethers.providers.Web3Provider(connection);
     const signer = provider.getSigner();
-    const contract = new ethers.Contract(nftmarketaddress, NFTMarket.abi, signer);
-
+    const contract = new ethers.Contract(nftmarketaddress, NFTMarket.abi, signer) as any as NFTMarketType;
     const price = ethers.utils.parseUnits(nft.price.toString(), 'ether');
-    const transaction = await contract.createMarketSale(nftmarketaddress, nft.tokenId, { value: price })
+    const transaction = await contract.createMarketSale(nftaddress, nft.tokenId, { value: price });
     await transaction.wait();
     loadNFTs();
   }
